@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro enviado</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #6A040F, #E85D04);
+            ;
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+            font-family: Roboto, sans-serif;
+         ;
+            
+            display: grid;
+            place-content: center;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            text-shadow: #38040E;
+        }
+
+        .inputvoltaraoforms {
+            height: 40px;
+            width: 100%;
+            background-color: #9D0208;
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+
+        .inputvoltaraoforms:hover {
+            height: 40px;
+            width: 100%;
+            background-color: #6A040F;
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+
+        .box{
+            position: absolute;
+            border: #800E13;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            background-color: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 15px;
+            width: 50%;
+        }
+        </style>
+</head>
+<body>
+    <div class="box">
+<h1><b>Registro enviado.
+    <br></b>
+    Se deseja voltar para a página do formulário, clique no botão abaixo
+</b></h1>
+<input type="submit" class="inputvoltaraoforms" value="Voltar para o formulário" name="voltaraoforms" id="ivoltaraoforms">
+</div>
+</body>
+</html>
