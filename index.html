@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de itinerâncias</title>
+    <style>
+        body {
+            
+            background-image: linear-gradient(to right, #6A040F, #E85D04);
+            ;
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+            font-family: Roboto, sans-serif;
+         ;
+            
+            display: grid;
+            place-content: center;
+        }
+
+        .box{
+            position: absolute;
+            border: #800E13;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            background-color: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 15px;
+            width: 50%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            text-shadow: #38040E;
+        }
+
+        .inputrf{
+            background: none;
+            border: none;
+            border-bottom:1px solid #FFF;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px;
+        }
+        
+        
+        .labelrf{
+          position:relative;
+          top: -20px;
+          left: 0px;
+          pointer-events: none;
+          transition: .5s;
+          color: white;
+          font-size: 15px;
+          letter-spacing: 2px;
+        }
+        
+        .inputrf:focus ~ .labelrf,
+        .inputrf:valid ~ .labelrf{
+            top: -40px;
+            font-size: 12px;
+            color: #370617;
+        }
+
+        .inputlocal{
+            background: none;
+            border: none;
+            border-bottom:1px solid #FFF;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px;
+        }
+
+        .inputbuttonlocal {
+            height: 40px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.4);
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .inputbuttonlocal:hover {
+            height: 40px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.6);
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .inputsubimit {
+            height: 40px;
+            width: 100%;
+            background-color: #9D0208;
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+
+        .inputsubimit:hover {
+            height: 40px;
+            width: 100%;
+            background-color: #6A040F;
+            padding: 0px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            color: white;
+            border: none;
+            letter-spacing: 2px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+.inputdropdown{
+height: 40px;
+width: 100%;
+background-color: rgba(0,0,0,0.4);
+padding: 0px 5px;
+box-sizing: border-box;
+border-radius: 5px;
+outline: none;
+color: white;
+border: none;
+letter-spacing: 2px;
+font-size: 15px;
+}
+
+::-webkit-input-placeholder{color: aliceblue;}
+.inputdropdown::-moz-placeholder{color: aliceblue;}
+.dropdown{
+    width: 100%;
+    background-color: #370617;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: none;
+    height: 90px;
+    overflow: auto;
+    display: none;
+    padding: 5px;
+    color: white;
+
+    transform: translate(0px,-10px);
+}
+::-webkit-scrollbar-thumb{
+background-color: #6A040F;
+border-radius: 5px;
+}
+
+::-webkit-scrollbar{
+   background-color: #370617;
+   width: 5px;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+}
+.item{
+    height: 30px;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    transition: .3s;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.item:hover{
+    background-color: rgba(0,0,0,0.2);
+    padding-left: 7px;
+    transition: .3s;
+    letter-spacing: 2px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="box">
+<form action="https://api.sheetmonkey.io/form/oYL8RSnpKUia48vPGVaSwV" method="POST" autocomplete="off">
+<h1><b>Itinerância</b></h1>
+<div class="container">
+    <input type="text" class="inputdropdown" name="dres" placeholder="Selecione sua DRE" onfocus="dropdown(0)" onblur="dropdown(1)">
+<div class="dropdown">
+    <div class="listdropdown">   
+<div class="item" id="item-1" onmousedown="category(1)">Butantã</div>
+
+<div class="item" id="item-2" onmousedown="category(2)">Campo Limpo</div>
+
+<div class="item" id="item-3" onmousedown="category(3)">Capela do Socorro</div>
+
+<div class="item" id="item-4" onmousedown="category(4)">Freguesia/Brasilândia</div>
+
+<div class="item" id="item-5" onmousedown="category(5)">Guainases</div>
+
+<div class="item" id="item-6" onmousedown="category(6)">Ipiranga</div>
+
+<div class="item" id="item-7" onmousedown="category(7)">Itaquera</div>
+
+<div class="item" id="item-8" onmousedown="category(8)">Jaçanã/Tremembé</div>
+
+<div class="item" id="item-9" onmousedown="category(9)">Penha</div>
+
+<div class="item" id="item-10" onmousedown="category(10)">Pirituba/Jaraguá</div>
+
+<div class="item" id="item-11" onmousedown="category(11)">Santo Amaro</div>
+
+<div class="item" id="item-12" onmousedown="category(12)">São Mateus</div>
+
+<div class="item" id="item-13" onmousedown="category(13)">São Miguel Paulista</div>
+</div>
+</div>
+</div>
+<br></br>
+<div class="inputboxrf">
+<input type="text" class="inputrf" name="registrofuncional" id="iregistrofuncional" required>
+<label for="registrofuncional" class="labelrf">Registro Funcional</label>
+</div>
+
+ <!-- Adicione o atributo onclick ao botão Registrar Itinerância -->
+<p><input type="button" class="inputbuttonlocal" value="Obter localização" onclick="obterLocalizacao()"></p>
+<!-- Campo para exibir a localização -->
+<p><input type="text" class="inputlocal" name="local" id="ilocal" required></p>
+
+<input type="submit" class="inputsubimit" value="Enviar registro" name="subimit" id="isubimit">
+</form>
+</div>
+</body>
+</html>
+
+<script>
+    function category(c){
+        var item = document.getElementById('item-'+c).innerHTML;
+        document.getElementsByTagName('input')[0].value=item;
+    }
+    function dropdown(p){
+    var e = document.getElementsByClassName('dropdown')[0];
+    var d = ['block','none'];
+    e.style.display = d[p];
+    
+    var t = ['0px','0px,-10px'];
+    
+    setTimeout(function(){
+        e.style.transform = 'translate('+t[p]+')';
+    },0);
+    }
+    </script>
+
+<!-- Seu script JavaScript -->
+<script>
+    // Função para obter a localização do usuário
+    function obterLocalizacao() {
+    if (navigator.geolocation) {
+    function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    // Preencha o campo de localização com a latitude e longitude
+    document.getElementById("ilocal").value = "Latitude: " + latitude + ", Longitude: " + longitude;
+    }
+    function error(err) {
+    console.log(err);
+    }
+    // Solicite a localização apenas quando o botão for clicado
+    navigator.geolocation.getCurrentPosition(success, error, {
+    enableHighAccuracy: true,
+    timeout: 5000
+    });
+    } else {
+    alert("Geolocalização não é suportada neste navegador.");
+    }
+    }
+    </script>
