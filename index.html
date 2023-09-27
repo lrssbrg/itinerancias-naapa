@@ -136,6 +136,98 @@
             cursor: pointer;
         }
 
+.inputboxcheckinout {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    
+}
+
+.checkin {
+    appearance: none;
+    border: 2px solid #D00000;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.checkin:before {
+    content: '';
+    appearance: none;
+    background: #9D0208;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    position: absolute;
+    opacity: 0;
+    transform: all 900ms ease-in-out;
+}
+
+.checkin:checked:before {
+opacity: 1;
+}
+
+.checkin:focus {
+box-shadow: 0 0 5px #370617;
+}
+
+.labelentrada {
+    color: white;
+    margin-right: 20px;
+}
+
+.checkout {
+    appearance: none;
+    border: 2px solid #D00000;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout:before {
+    content: '';
+    appearance: none;
+    background: #9D0208;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    position: absolute;
+    opacity: 0;
+    transform: all 900ms ease-in-out;
+}
+
+.checkout:checked:before {
+opacity: 1;
+}
+
+.checkout:focus {
+box-shadow: 0 0 5px #370617;
+}
+
+.labelsaida {
+    color: white;
+    padding-left: 7px;
+}
+
 .inputdropdown{
 height: 40px;
 width: 100%;
@@ -163,6 +255,7 @@ font-size: 15px;
     display: none;
     padding: 5px;
     color: white;
+    transition: .3s;
 
     transform: translate(0px,-10px);
 }
@@ -181,7 +274,7 @@ border-radius: 5px;
     height: 30px;
     padding: 0px 5px;
     box-sizing: border-box;
-    transition: .3s;
+    transition: .6s;
     cursor: pointer;
     font-size: 12px;
 }
@@ -200,6 +293,7 @@ border-radius: 5px;
 <div class="box">
 <form action="https://api.sheetmonkey.io/form/oYL8RSnpKUia48vPGVaSwV" id="formsregistro" method="POST" autocomplete="off">
 <h1><b>Itinerância</b></h1>
+
 <div class="container">
     <input type="text" class="inputdropdown" name="dres" placeholder="Selecione sua DRE" onfocus="dropdown(0)" onblur="dropdown(1)">
 <div class="dropdown">
@@ -243,7 +337,15 @@ border-radius: 5px;
 <!-- Campo para exibir a localização -->
 <p><input type="text" class="inputlocal" name="local" id="ilocal" required></p>
 
+<div class="inputboxcheckinout">
+    <input type="checkbox" class="checkin" name="entrada" id="ientrada">
+    <label for="ientrada" class="labelentrada">Entrada</label>
+    <input type="checkbox" class="checkout" name="saida" id="isaida">
+    <label for="isaida" class="labelsaida">Saída</label>
+    </div>
+
 <input type="submit" class="inputsubimit" value="Enviar registro" name="subimit" id="isubimit">
+
 </form>
 </div>
 <script src="scriptdatahora.js"></script>
@@ -292,3 +394,18 @@ border-radius: 5px;
     }
     }
     </script>
+
+<script>
+    function validarFormulario() {
+        // Obter referências às caixas de seleção
+        var checkbox1 = document.getElementById("ientrada");
+        var checkbox2 = document.getElementById("isaida");
+        
+        // Verificar se pelo menos uma caixa de seleção está marcada
+        if (!checkbox1.checked && !checkbox2.checked) {
+            alert("Selecione pelo menos uma opção.");
+            return false; // Impedir o envio do formulário
+        }
+        return true; // Permitir o envio do formulário
+    }
+</script>
