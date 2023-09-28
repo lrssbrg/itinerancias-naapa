@@ -332,10 +332,12 @@ border-radius: 5px;
 <label for="registrofuncional" class="labelrf">Registro Funcional</label>
 </div>
 
- <!-- Adicione o atributo onclick ao botão Registrar Itinerância -->
+<!-- Adicione o atributo onclick ao botão Registrar Itinerância -->
 <p><input type="button" class="inputbuttonlocal" value="Obter localização" onclick="obterLocalizacao()"></p>
 <!-- Campo para exibir a localização (com o atributo readonly) -->
 <p><input type="text" class="inputlocal" name="local" id="ilocal" readonly></p>
+<!-- Botão de envio -->
+<p><input type="submit" class="inputsubimit" id="isubimit" value="Enviar registro" disabled></p>
 
 <div class="inputboxcheckinout">
     <input type="checkbox" class="checkin" name="entrada" id="ientrada">
@@ -343,8 +345,6 @@ border-radius: 5px;
     <input type="checkbox" class="checkout" name="saida" id="isaida">
     <label for="isaida" class="labelsaida">Saída</label>
     </div>
-
-<input type="submit" class="inputsubimit" value="Enviar registro" name="subimit" id="isubimit" disabled>
 
 </form>
 </div>
@@ -410,20 +410,23 @@ border-radius: 5px;
     }
 </script>
 
-<script>
-    // Captura o campo de localização e o botão de envio
-    const localizacaoInput = document.getElementById('ilocal');
-    const botaoEnviar = document.getElementById('isubimit');
+    <script>
+        // Captura o campo de localização e o botão de envio
+        const localizacaoInput = document.getElementById('ilocal');
+        const botaoEnviar = document.getElementById('isubimit');
 
-    // Função para verificar se o campo de localização está vazio
-    function verificarCampoLocalizacao() {
-        if (localizacaoInput.value === '') {
-            botaoEnviar.setAttribute('disabled', 'true');
-        } else {
-            botaoEnviar.removeAttribute('disabled');
+        // Função para verificar se o campo de localização está vazio ou preenchido
+        function verificarCampoLocalizacao() {
+            if (localizacaoInput.value === '') {
+                botaoEnviar.setAttribute('disabled', 'true');
+            } else {
+                botaoEnviar.removeAttribute('disabled');
+            }
         }
-    }
 
-    // Adiciona um ouvinte de evento ao campo de localização
-    localizacaoInput.addEventListener('input', verificarCampoLocalizacao);
+        // Adiciona um ouvinte de evento ao campo de localização
+        localizacaoInput.addEventListener('input', verificarCampoLocalizacao);
+
+        // Verifica o estado do campo de localização a cada 500ms
+        setInterval(verificarCampoLocalizacao, 500);
     </script>
