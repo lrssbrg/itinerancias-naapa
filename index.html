@@ -291,11 +291,11 @@ border-radius: 5px;
 
 <body>
 <div class="box">
-<form action="https://api.sheetmonkey.io/form/m95gX5Fkvef7L6ZHtjADFB" id="formsregistro" method="POST" autocomplete="off">
+<form action="https://api.sheetmonkey.io/form/m95gX5Fkvef7L6ZHtjADFB" id="formsregistro" method="POST" autocomplete="off" onsubmit="return validarFormulario();">
 <h1><b>Itinerância</b></h1>
-
+ 
 <div class="container">
-    <input type="text" class="inputdropdown" name="dres" placeholder="Selecione sua DRE" onfocus="dropdown(0)" onblur="dropdown(1)">
+    <input type="text" class="inputdropdown" id="menu" name="dres" placeholder="Selecione sua DRE" onfocus="dropdown(0)" onblur="dropdown(1)" required>
 <div class="dropdown">
     <div class="listdropdown">   
 <div class="item" id="item-1" onmousedown="category(1)">Butantã</div>
@@ -334,8 +334,8 @@ border-radius: 5px;
 
  <!-- Adicione o atributo onclick ao botão Registrar Itinerância -->
 <p><input type="button" class="inputbuttonlocal" value="Obter localização" onclick="obterLocalizacao()"></p>
-<!-- Campo para exibir a localização -->
-<p><input type="text" class="inputlocal" name="local" id="ilocal" required></p>
+<!-- Campo para exibir a localização (com o atributo readonly) -->
+<p><input type="text" class="inputlocal" name="local" id="ilocal" readonly></p>
 
 <div class="inputboxcheckinout">
     <input type="checkbox" class="checkin" name="entrada" id="ientrada">
@@ -344,7 +344,7 @@ border-radius: 5px;
     <label for="isaida" class="labelsaida">Saída</label>
     </div>
 
-<input type="submit" class="inputsubimit" value="Enviar registro" name="subimit" id="isubimit">
+<input type="submit" class="inputsubimit" value="Enviar registro" name="subimit" id="isubimit" disabled>
 
 </form>
 </div>
@@ -409,3 +409,21 @@ border-radius: 5px;
         return true; // Permitir o envio do formulário
     }
 </script>
+
+<script>
+    // Captura o campo de localização e o botão de envio
+    const localizacaoInput = document.getElementById('ilocal');
+    const botaoEnviar = document.getElementById('isubimit');
+
+    // Função para verificar se o campo de localização está vazio
+    function verificarCampoLocalizacao() {
+        if (localizacaoInput.value === '') {
+            botaoEnviar.setAttribute('disabled', 'true');
+        } else {
+            botaoEnviar.removeAttribute('disabled');
+        }
+    }
+
+    // Adiciona um ouvinte de evento ao campo de localização
+    localizacaoInput.addEventListener('input', verificarCampoLocalizacao);
+    </script>
