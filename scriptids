@@ -1,0 +1,61 @@
+script>
+var registros = []; // Array para armazenar os registros temporariamente
+
+function registrar() {
+    var entradaCheckbox = document.getElementById("entrada");
+    var saidaCheckbox = document.getElementById("saida");
+    
+    if (entradaCheckbox.checked && !saidaCheckbox.checked) {
+        // Gerar um ID único para este registro
+        var registroId = "registro_" + new Date().getTime();
+        
+        // Adicionar o registro à lista temporária
+        registros.push(registroId);
+        
+        // Limpar a checkbox de entrada
+        entradaCheckbox.checked = false;
+        
+        alert("Entrada registrada. Aguarde para marcar a saída.");
+    } else if (!entradaCheckbox.checked && saidaCheckbox.checked) {
+        alert("Você não pode marcar a saída sem marcar a entrada.");
+    } else {
+        alert("Por favor, marque apenas uma opção: entrada ou saída.");
+    }
+    
+    console.log("Registros temporários: " + registros);
+}
+
+// Função para enviar os registros para a API
+function enviarParaAPI() {
+    // Supondo que você tenha uma URL de API para enviar os dados
+    var apiUrl = "https://sua-api-exemplo.com/registrar";
+    
+    // Supondo que você tenha outros dados do formulário a serem enviados
+    var outrosDados = {
+        nome: "João",
+        idade: 30,
+        // Outros campos do formulário
+    };
+    
+    // Enviar os dados para a API
+    fetch(apiUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            registros: registros,
+            outrosDados: outrosDados
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Resposta da API:", data);
+        // Limpar a lista de registros após o envio bem-sucedido
+        registros = [];
+    })
+    .catch(error => {
+        console.error("Erro ao enviar para a API:", error);
+    });
+}
+</script>
